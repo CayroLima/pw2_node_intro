@@ -1,0 +1,17 @@
+{
+  "name": "aula1902",
+  "version": "1.0.0",
+  "description": "Introdução ao node em JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Aula1902"
+  ],
+  "author": "Kauan - Cayro",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
