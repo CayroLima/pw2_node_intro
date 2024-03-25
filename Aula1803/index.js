@@ -25,7 +25,7 @@ function operation(){
         }
         else if (action === "Depositar"){
             console.log("Depositando na sua Conta")
-            //deposite()
+            //deposit()
         }
         else if (action === "Consultar Saldo"){
             console.log("Consultando Saldo")
@@ -52,7 +52,7 @@ function operation(){
                 break;
             case "Depositar":
                 console.log("Depositando na sua Conta")
-                //deposite()
+                //deposit()
                 break;
             case "Sacar":
                 console.log("Sacando da Conta")
