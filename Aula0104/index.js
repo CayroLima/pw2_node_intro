@@ -207,7 +207,7 @@ function getAccountBalance() {
         }
     ]).then((answer) => {
         const accountName = answer['accountName']
-
+        
         if(!checkAccount(accountName)){
             console.error(chalk.bgRed.white('Esta conta não existe!'))
             return getAccountBalance()
