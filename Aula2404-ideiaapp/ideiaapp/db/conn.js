@@ -7,9 +7,9 @@ const sequelize = new Sequelize('ideias', 'root', '', {
 
 try {
     sequelize.authenticate()
-    console.log('Conectamos com o Sequelize!')
+    console.log('Conectado ao servidor MySQL!')
 } catch (error) {
-    console.error('Não foi possível conectar:', error)
+    console.error(`Error MySQL: ${error}`)
 }
 
 module.exports = sequelize
