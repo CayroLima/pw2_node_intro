@@ -1,3 +1,5 @@
+//npx dotenv-vault@latest pull
+
 const express = require('express')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
@@ -25,60 +27,60 @@ app.use(
 
 app.use(express.json())
 
-// app.use(
-//     session({
-//         name: 'session',
-//         secret: 'nosso_secreto',
-//         resave: false,
-//         saveUninitialized: false,
-//         store: new FileStore({
-//             logFn: function () { },
-//             path: require('path').join(require('os').tmpdir(), 'session'),
-//         }),
-//         cookie: {
-//             secure: false,
-//             maxAge: 3600000,
-//             expires: new Date(Date.now() + 3600000),
-//             httpOnly: true,
-//         },
-
-//     })
-// )
-
+app.use(
+    session({
+        name:'session',
+        secret:'nosso_secret',
+        resave: false,
+        saveUninitialized: false,
+        store: new FileStore({
+            logFn: function () { },
+            path: require('path').join(require('os').tmpdir(), 'session'),
+        }),
+        cookie: {
+            secure: false,
+            maxAge: 3600000,
+            expires: new Date(Date.now() + 3600000),
+            httpOnly: true,
+        },
+    }),
+)
 
 
-// app.use(flash())
+
+app.use(flash())
 
 app.use(express.static('public'))
 
 
 
-// app.use((req,res, next) => {
-//     console.log(req.session.userID)
+app.use((req,res, next) => {
+    console.log(req.session.userID)
 
-//     if(req.session.userID){
-//         res.locals.session = req.session
-//     }
+    if(req.session.userID){
+        res.locals.session = req.session
+    }
     
-//     next()
-// })
+    next()
+})
 
 
 app.use('/ideias', IdeiasRoutes)
 app.use('/', authRoutes)
 
-// app.get('/', IdeiasController.showIdeias)
+app.get('/', IdeiasController.showIdeias)
 
 
 conn
-    .sync({ force: true })
+    .sync({})
     .then(() => {
         app.listen(3000, () => {
             console.log('Servidor: http://localhost:3000/')
         })
-    }).catch((err) => {
-        console.error(`Error do MySQL / Sequelize: ${err}`)
-    });
+    })
+    // .catch((err) => {
+    //     console.error(`Error do MySQL / Sequelize: ${err}`)
+    // });
 
 
 
